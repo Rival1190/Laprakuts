@@ -1,154 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINDSPACE</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-<link rel="stylesheet" href="css/custom.css">
-</head>
-<!-- Di dalam FADE -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MINDSPACE</title>
+
+  <!-- Bootstrap & AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <div data-aos="fade-up">
+   <link rel="stylesheet" href="css/custom.css">
 
-  </div>
-  
-  <div data-aos="zoom-in" data-aos-delay="200">
-
-  </div>
-  
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  
-
+  <!-- Custom Style -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    #navbar {
+      transition: top 0.3s ease-in-out;
+      z-index: 999;
+    }
+    .bg-purple {
+      background-color: #6f42c1;
+    }
+    .footer__wave {
+      width: 100%;
+      height: 150px;
+    }
+  </style>
+</head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-purple sticky-top"> 
-        <div class="container">
-    <a href="#" class="navbar-brand fw-bold ">MINDSPACE</a>
-    <div class="logosus ">
-      <img src="logo-Photoroom-Photoroom.png" alt="" srcset="" style="width: 50px;">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-purple sticky-top">
+    <div class="container">
+      <a href="#" class="navbar-brand fw-bold">MINDSPACE</a>
+      <img src="logo-Photoroom-Photoroom.png" alt="logo" style="width: 50px;">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="cust/cust.html" target="_blank">Chat Dokter</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pendidikan">Cek Kesehatan</a></li>
+          <li class="nav-item"><a class="nav-link" href="cust.html">Login</a></li>
+        </ul>
+      </div>
     </div>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+  </nav>
 
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link"target="_blank" href="cust/cust.html">Chat Dokter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pendidikan">Cek Kesehatan</a></li>
-                   
-                    <li class="nav-item"><a class="nav-link" href="cust.html">Login</a></li>
-               
-
-                    
-
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-    <section id="jumbo" class="bg-light py-5">
-      <div class="container">
-        <div class="rounded py-5 px-4 bg-light-purple">
-          <div class="row align-items-start">
-            
-            <!-- KIRI: Judul -->
-            <div class="col-md-4 mb-4">
-              <h2 class="fw-bold text-dark mb-3">Solusi Mental di Tanganmu</h2>
-            </div>
-    
-            <!-- KANAN: Grid Card Menu -->
-            <div class="col-md-8" style="box-shadow: 100px;">
-              <div class="row g-3">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                  <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                    <div class="d-flex align-items-start">
-                      <img src="chat-left-text.svg" class="me-3" style="width: 40px;" alt="" />
-                      <div>
-                        <p class="fw-bold mb-1"> <a href="cust/cust.html"  rel="">Chat Dengan Dokter</a> </p>
-                        <small>Lebih dari 50 spesialis tersedia 24 jam</small>
-                      </div>
-                      <span class="ms-auto text-danger fw-bold">›</span>
+  <!-- HERO / JUMBO -->
+  <section id="jumbo" class="bg-light py-5" data-aos="fade-up">
+    <div class="container">
+      <div class="rounded py-5 px-4 bg-light-purple">
+        <div class="row align-items-start">
+          <div class="col-md-4 mb-4">
+            <h2 class="fw-bold text-dark mb-3">Solusi Mental di Tanganmu</h2>
+          </div>
+          <div class="col-md-8">
+            <div class="row g-3">
+              <div class="col-md-4" data-aos="fade-up">
+                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
+                  <div class="d-flex align-items-start">
+                    <img src="chat-left-text.svg" class="me-3" style="width: 40px;" alt="" />
+                    <div>
+                      <p class="fw-bold mb-1"><a href="cust/cust.html">Chat Dengan Dokter</a></p>
+                      <small>Lebih dari 50 spesialis tersedia 24 jam</small>
                     </div>
                   </div>
                 </div>
-    
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                  <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                    <div class="d-flex align-items-start">
-                      <img src="shop.svg" class="me-3" style="width: 40px;" alt="" />
-                      <div>
-                        <h6 class="fw-bold mb-1"><a href="https://www.tokopedia.com/search?st=&q=psikolog&srp_component_id=02.01.00.00&srp_page_id=&srp_page_title=&navsource=">Toko Psikolog</a></h6>
-                        <small>pahami dan pelajari tentang psikologi </small>
-                      </div>
-                      <span class="ms-auto text-danger fw-bold">›</span>
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
+                  <div class="d-flex align-items-start">
+                    <img src="shop.svg" class="me-3" style="width: 40px;" alt="" />
+                    <div>
+                      <h6 class="fw-bold mb-1"><a href="https://www.tokopedia.com/search?q=psikolog" target="_blank">Toko Psikolog</a></h6>
+                      <small>Pahami dan pelajari tentang psikologi</small>
                     </div>
                   </div>
                 </div>
-    
-                <!-- Card 3 -->
-              
-    
-                
-                <div class="col-md-4">
-                  <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                    <div class="d-flex align-items-start">
-                      <img src="hospital.svg" class="me-3" style="width: 40px;" alt="" />
-                      <div>
-                        <h6 class="fw-bold mb-1"> <a href="https://www.google.com/maps/search/clinic+psikologi/@-7.8029842,110.2969027,13z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank" rel="">Clinic</a></h6>
-                        <small>Cari Clinic Terdekat Denganmu</small>
-                      </div>
-                      <span class="ms-auto text-danger fw-bold">›</span>
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
+                  <div class="d-flex align-items-start">
+                    <img src="hospital.svg" class="me-3" style="width: 40px;" alt="" />
+                    <div>
+                      <h6 class="fw-bold mb-1">
+                        <a href="https://www.google.com/maps/search/clinic+psikologi" target="_blank">Clinic</a>
+                      </h6>
+                      <small>Cari Clinic Terdekat Denganmu</small>
                     </div>
                   </div>
                 </div>
-    
-                
-               
-                
-              </div> <!-- end row -->
-            </div> <!-- end col kanan -->
+              </div>
+            </div> <!-- row -->
           </div>
         </div>
       </div>
-    </section>
-    
-     
-    <main class="container my-5 ">
-        <!-- About -->
-       <section id="about" class="mb-5" data-aos="fade-up" style="background-image: url(bg.jpg) ; background-repeat: no-repeat; background-size: cover; ">
-        
-         <b class="h3 mb-3 text-black"  style="font-size: 30px; font-family: 'Franklin Gothic Medium';">VISI</b>
-         <p>Menjadi layanan psikolog terpercaya yang mendukung kesehatan mental dan kesejahteraan emosional setiap individu secara holistik dan berkelanjutan.</p>
-         <b class="h3 mb-3 text-black" style="font-size: 30px; font-family: 'Franklin Gothic Medium' ;">MISI</b>
-         <p>Memberikan layanan psikologi yang profesional, empatik, dan berbasis ilmiah kepada individu, keluarga, dan komunitas.
+    </div>
+  </section>
 
-          Meningkatkan kesadaran masyarakat tentang pentingnya kesehatan mental melalui edukasi dan kampanye positif.
-          
-          Mendampingi proses pemulihan dan pertumbuhan psikologis klien dengan pendekatan yang manusiawi dan personal.
-          
-          Mengembangkan inovasi layanan konsultasi, baik secara langsung maupun daring, agar mudah diakses oleh semua kalangan.
-          
-          Menjaga etika, kerahasiaan, dan kenyamanan dalam setiap sesi konseling atau terapi.</p>
-        </section>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="p-5 text-dark" data-aos="fade-up" style="background-image: url(bg.jpg); background-size: cover;">
+    <div class="container">
+      <h3 class="mb-3">VISI</h3>
+      <p>Menjadi layanan psikolog terpercaya yang mendukung kesehatan mental dan kesejahteraan emosional setiap individu secara holistik dan berkelanjutan.</p>
+      <h3 class="mb-3 mt-4">MISI</h3>
+      <p>
+        Memberikan layanan psikologi yang profesional, empatik, dan berbasis ilmiah kepada individu, keluarga, dan komunitas.<br>
+        Meningkatkan kesadaran masyarakat tentang pentingnya kesehatan mental melalui edukasi dan kampanye positif.<br>
+        Mendampingi proses pemulihan dan pertumbuhan psikologis klien dengan pendekatan yang manusiawi dan personal.<br>
+        Mengembangkan inovasi layanan konsultasi, baik secara langsung maupun daring.<br>
+        Menjaga etika, kerahasiaan, dan kenyamanan dalam setiap sesi konseling atau terapi.
+      </p>
+    </div>
+  </section>
 
-  
-   </main>
-   <div class="informasi">
-    
-
-
-    
-   </div>
+  <!-- FOOTER -->
+  <footer class="mt-5">
   <!-- Bootstrap 5 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -228,13 +199,13 @@
   </div>
 </div>
 <div class="footer">
-  <footer class="footer">
+  <footer class="footer" >
   
       <!-- SVG Wave di atas -->
       <svg
-        class="footer__wave"
+        class="footer__wave" style="margin-bottom: 100;"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="100 0 1000 300"
+        viewBox="300 0 600 300"
         preserveAspectRatio="none"
       >
         <path
@@ -259,9 +230,20 @@
           <li><img src="whatsapp.svg" alt=""><a href="https://wa.me/6289515004836"> Whatsapp</a></li>
           <li><img src="facebook.svg" alt=""><a href="#"> facebook</a></li>
         </ul>
+        <div class="footer__bottom">
+      <div class="contact" >
+        <img src="icons/email.svg" alt="">
+        <span>adityauzmanchandra@gmail.com</span>
       </div>
+      <div class="contact" >
+        <img src="icons/phone.svg" alt="">
+        <span>021-5095-9900</span>
+      </div>
+    </div>
+      </div>
+      
       <div class="footer__col">
-        <h4 style="color: beige;">FRONT END</h4>
+        <h4 style="color: rgb(0, 0, 0);">FRONT END</h4>
         <ul>
           <li><a href="#">Aditya Uzman Chandra Nugraha</a></li>
          
@@ -280,33 +262,32 @@
       </div>
     </div>
 
-    <!-- Bottom: kontak -->
-    
+     <div>
+    <p>© 2016-2025, PT and Affiliates. All rights res
   </footer>
-  
 
-</div>
-<div class="footer__bottom">
-      <div class="contact">
-        <img src="icons/email.svg" alt="">
-        <span>adityauzmanchandra@gmail.com</span>
-      </div>
-      <div class="contact">
-        <img src="icons/phone.svg" alt="">
-        <span>021-5095-9900</span>
-      </div>
-    </div>
+  <!-- SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
 
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    // Hide navbar on scroll down
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
 
-
-    
-
-   
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script><!DOCTYPE html>
+    window.addEventListener("scroll", function () {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        navbar.style.top = "-100px";
+      } else {
+        navbar.style.top = "0";
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  </script>
 </body>
 </html>
