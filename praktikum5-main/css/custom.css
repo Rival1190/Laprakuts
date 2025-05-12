@@ -1,4 +1,6 @@
-.bg-purple {background-color: blue;}
+.bg-purple {background-color: blue;
+
+}
 .text-purple{
     color: blueviolet;
 }
@@ -12,13 +14,7 @@
     );
   }
   
-  .footer__top {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    margin-bottom: 0px;
-  }
+
   .service {
     display: flex;
     align-items: center;
