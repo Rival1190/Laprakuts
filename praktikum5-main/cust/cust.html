@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Masuk / Daftar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cust.css">
+ 
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <img src="logo-Photoroom-Photoroom.png" alt="">
+  </div>
+  <div class="form-container" id="formContainer">
+
+    <!-- Form Login -->
+    <div class="form" id="signInForm">
+      <h2>Masuk</h2>
+      <form action="login.php" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Kata Sandi" required>
+        <button type="button"> <a href="chat.html">Masuk</a></button>
+      </form>
+      <div class="toggle-btn">
+        
+        Belum punya akun? <a onclick="toggleForm()">Daftar</a>
+      </div>
+    </div>
+
+    <!-- Form Daftar -->
+    <div class="form" id="signUpForm">
+      <h2>Daftar</h2>
+      <form action="signup.php" method="POST">
+        <input type="text" name="nama" placeholder="Nama Lengkap" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Kata Sandi" required>
+        <button type="submit" > Daftar</button>
+      </form>
+      <div class="toggle-btn">
+        Sudah punya akun? <a onclick="toggleForm()">Masuk</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleForm() {
+    const container = document.getElementById("formContainer");
+    container.style.transform = container.style.transform === "translateX(-50%)"
+      ? "translateX(0)"
+      : "translateX(-50%)";
+  }
+
+  function validateLogin() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const pass = document.getElementById("loginPass").value.trim();
+    if (!email || !pass) {
+      alert("Email dan kata sandi wajib diisi.");
+    } else {
+      alert("Login berhasil (simulasi).");
+      // Redirect ke dashboard di sini
+      window.location.assign = "chat.html";
+
+    }
+  }
+
+  function validateRegister() {
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const pass = document.getElementById("regPass").value.trim();
+    if (!name || !email || !pass) {
+      alert("Semua data wajib diisi.");
+    } else {
+      alert("Pendaftaran berhasil (simulasi).");
+      
+      toggleForm(); // Pindah ke login
+    }
+  }
+</script>
+
+</body>
+</html>

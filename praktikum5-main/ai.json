@@ -1,0 +1,18 @@
+// Front-end: kirim pesan dan terima balasan AI
+async function sendToAI(msg) {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message: msg })
+    });
+    return (await res.json()).reply;
+  }
+  
+  // Panggil:
+  sendBtn.addEventListener('click', async () => {
+    const txt = input.value.trim();
+    if (!txt) return;
+    addMessage(txt, 'user');
+    addMessage(await sendToAI(txt), 'agent');
+  });
+  
