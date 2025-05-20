@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tes Depresi (PHQ-9)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-image: url(WhatsApp\ Image\ 2025-05-12\ at\ 08.20.26_ce4b8e89.jpg);
+      
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      margin-top: 20px;
+      margin-bottom: 30px;
+      max-width: 600px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color:#e4e4e4;
+    }
+
+    .question {
+      margin-bottom: 10px;
+    }
+
+    .choices label {
+      margin-right: 15px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 280px;
+      background: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 30px;
+      padding: 15px;
+      border-radius: 5px;
+      background: #fff3e0;
+      border: 1px solid #ffb74d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Dalam 2 minggu terakhir,</h2>
+    <p><strong>Seberapa sering kamu merasa terganggu oleh hal berikut...</strong></p>
+
+    <form id="depressionForm">
+      <div class="question">
+        <p>1. Kurang senang atau tertarik dalam kegiatan sehari-hari?</p>
+        <div class="choices">
+          <label><input type="radio" name="q0" value="0" required> Tidak Pernah</label>
+          <label><input type="radio" name="q0" value="1"> Beberapa Hari</label>
+          <label><input type="radio" name="q0" value="2"> Sebagian Besar Hari</label>
+          <label><input type="radio" name="q0" value="3"> Hampir Setiap Hari</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Merasa sedih, muram, dan putus asa?</p>
+        <div class="choices">
+          <label><input type="radio" name="q1" value="0" required> Tidak Pernah</label>
+          <label><input type="radio" name="q1" value="1"> Beberapa Hari</label>
+          <label><input type="radio" name="q1" value="2"> Sebagian Besar Hari</label>
+          <label><input type="radio" name="q1" value="3"> Hampir Setiap Hari</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Sulit tidur atau tidur nyenyak; atau terlalu banyak tidur?</p>
+        <div class="choices">
+          <label><input type="radio" name="q2" value="0" required> Tidak Pernah</label>
+          <label><input type="radio" name="q2" value="1"> Beberapa Hari</label>
+          <label><input type="radio" name="q2" value="2"> Sebagian Besar Hari</label>
+          <label><input type="radio" name="q2" value="3"> Hampir Setiap Hari</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Merasa lelah atau kekurangan energi?</p>
+        <div class="choices">
+          <label><input type="radio" name="q3" value="0" required> Tidak Pernah</label>
+          <label><input type="radio" name="q3" value="1"> Beberapa Hari</label>
+          <label><input type="radio" name="q3" value="2"> Sebagian Besar Hari</label>
+          <label><input type="radio" name="q3" value="3"> Hampir Setiap Hari</label>
+        </div>
+      </div>
+
+      <button class="submit-btn" type="submit">Kirim</button>
+    </form>
+
+    <div id="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    document.getElementById("depressionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const totalQuestions = 4;
+      let score = 0;
+
+      for (let i = 0; i < totalQuestions; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) {
+          score += parseInt(selected.value);
+        }
+      }
+
+      let interpretation = "";
+      if (score <= 4) {
+        interpretation = "Tidak ada gejala depresi.";
+      } else if (score <= 9) {
+        interpretation = "Depresi ringan.";
+      } else if (score <= 14) {
+        interpretation = "Depresi sedang.";
+      } else if (score <= 19) {
+        interpretation = "Depresi cukup berat.";
+      } else {
+        interpretation = "Depresi berat. Pertimbangkan untuk konsultasi dengan profesional.";
+      }
+
+      const resultBox = document.getElementById("result");
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h3>Hasil Tes Anda</h3>
+        <p><strong>Skor: ${score}</strong></p>
+        <p>${interpretation}</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
