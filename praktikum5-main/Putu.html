@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Saya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(foto\ putu.jpeg);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .profile-card {
+      
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 4px solid #2007ad;
+    }
+
+    .profile-card h2 {
+      margin: 0.2rem 0;
+      font-size: 1.5rem;
+    }
+
+    .profile-card p.bio {
+      font-size: 0.95rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .info {
+      font-size: 0.9rem;
+      color:white;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: #6c63ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #3b35d5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="profile-card">
+  <img src="foto putu.jpeg" alt="Foto Profil">
+  <h2>Putu </h2>
+  <p class="info">Sarjana Informatika<br>NIM: 23.11.5514</p>
+  <p class="bio">Saya adakah Full Stack Developer yang antusias mempelajari frontend dan backend. Saya percaya bahwa teknologi bisa menjadi solusi banyak masalah manusia , Dan saya tidak percaya cinta.</p>
+  
+  <div class="social-links">
+    <a href="https://instagram.com/sayamaiil" target="_blank">Instagram</a>
+    <a href="mailto:adityauzmanchandra@gmail.com">Email</a>
+    <a href="https://wa.me/6281343178266" target="_blank">WhatsApp</a>
+  </div>
+</div>
+
+</body>
+</html>
