@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Pengaturan Produk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Admin Panel</h3>
+            <a href="/admin-dashboard.html">Dashboard</a>
+            <a href="/admin-halaman.html">Pengaturan Halaman</a>
+            <a href="/admin-tim.html">Pengaturan TIM</a>
+            <a href="/admin-produk.html" class="active">Pengaturan Produk</a>
+            <a href="/admin-chat.html">Chat</a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+        <div class="main-content">
+            <h2>Form Input Data Produk/Service</h2>
+            <form id="form-produk">
+                <div class="form-group"><label for="nama">Nama Produk/Service</label><input type="text" id="nama" required></div>
+                <div class="form-group"><label for="deskripsi">Deskripsi</label><textarea id="deskripsi" required></textarea></div>
+                <button type="submit">Tambah Produk</button>
+            </form>
+            <p id="form-message" class="message"></p>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nama</th><th>Deskripsi</th></tr></thead>
+                <tbody id="daftar-produk"></tbody>
+            </table>
+        </div>
+    </div>
+<script>
+    const formProduk = document.getElementById('form-produk');
+    const tbodyDaftarProduk = document.getElementById('daftar-produk');
+    const formMessage = document.getElementById('form-message');
+
+    async function fetchProduk() {
+        const res = await fetch('/api/produk');
+        if (res.ok) {
+            const dataProduk = await res.json();
+            tbodyDaftarProduk.innerHTML = '';
+            dataProduk.forEach(p => {
+                tbodyDaftarProduk.innerHTML += `<tr><td>${p.id}</td><td>${p.nama}</td><td>${p.deskripsi}</td></tr>`;
+            });
+        } else if (res.status === 403) {
+            window.location.href = '/login.html';
+        }
+    }
+
+    formProduk.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const res = await fetch('/api/produk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nama: document.getElementById('nama').value, deskripsi: document.getElementById('deskripsi').value })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            formMessage.textContent = 'Produk berhasil ditambahkan!';
+            formMessage.className = 'message success';
+            formProduk.reset();
+            fetchProduk();
+        } else {
+            formMessage.textContent = data.message;
+            formMessage.className = 'message error';
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', fetchProduk);
+</script>
+</body>
+</html>

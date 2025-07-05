@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Pengaturan Halaman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Admin Panel</h3>
+            <a href="/admin-dashboard.html">Dashboard</a>
+            <a href="/admin-halaman.html" class="active">Pengaturan Halaman</a>
+            <a href="/admin-tim.html">Pengaturan TIM</a>
+            <a href="/admin-produk.html">Pengaturan Produk</a>
+            <a href="/admin-chat.html">Chat</a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+        <div class="main-content">
+            <h2>Pengaturan Konten Halaman</h2>
+            <form id="form-halaman">
+                <h3>Halaman Home</h3>
+                <div class="form-group"><label for="home_judul">Judul</label><input type="text" id="home_judul"></div>
+                <div class="form-group"><label for="home_konten">Konten</label><textarea id="home_konten"></textarea></div>
+                <hr>
+                <h3>Halaman Tentang Kami</h3>
+                <div class="form-group"><label for="tentang_judul">Judul</label><input type="text" id="tentang_judul"></div>
+                <div class="form-group"><label for="tentang_konten">Konten</label><textarea id="tentang_konten"></textarea></div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+            <p id="form-message" class="message"></p>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const res = await fetch('/api/halaman');
+        if (res.ok) {
+            const data = await res.json();
+            document.getElementById('home_judul').value = data.home.judul;
+            document.getElementById('home_konten').value = data.home.konten;
+            document.getElementById('tentang_judul').value = data.tentang.judul;
+            document.getElementById('tentang_konten').value = data.tentang.konten;
+        } else if (res.status === 403) {
+            window.location.href = '/login.html';
+        }
+    });
+
+    document.getElementById('form-halaman').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const payload = {
+            home: { judul: document.getElementById('home_judul').value, konten: document.getElementById('home_konten').value },
+            tentang: { judul: document.getElementById('tentang_judul').value, konten: document.getElementById('tentang_konten').value }
+        };
+        const res = await fetch('/api/halaman', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        const msgEl = document.getElementById('form-message');
+        msgEl.textContent = data.message;
+        msgEl.className = res.ok ? 'message success' : 'message error';
+    });
+</script>
+</body>
+</html>
