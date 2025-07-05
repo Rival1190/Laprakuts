@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Pengguna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container login-container chat-window">
+        <h2>Chat dengan Admin</h2>
+        <ul id="messages"></ul>
+        <form id="chat-form" class="chat-input">
+            <input id="m" autocomplete="off" style="width:100%"/><button>Kirim</button>
+        </form>
+        <a href="/logout" style="text-align:center; margin-top:1rem;">Logout</a>
+    </div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    document.getElementById('chat-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('m');
+        if (input.value) {
+            socket.emit('user message', input.value);
+            addMessage(input.value, 'user');
+            input.value = '';
+        }
+    });
+
+    socket.on('message to user', (data) => addMessage(data.text, 'admin'));
+
+    function addMessage(text, type) {
+        const item = document.createElement('li');
+        item.textContent = text;
+        item.className = type;
+        document.getElementById('messages').appendChild(item);
+    }
+</script>
+</body>
+</html>

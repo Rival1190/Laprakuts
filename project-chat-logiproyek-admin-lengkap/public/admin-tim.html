@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Pengaturan TIM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Admin Panel</h3>
+            <a href="/admin-dashboard.html">Dashboard</a>
+            <a href="/admin-halaman.html">Pengaturan Halaman</a>
+            <a href="/admin-tim.html" class="active">Pengaturan TIM</a>
+            <a href="/admin-produk.html">Pengaturan Produk</a>
+            <a href="/admin-chat.html">Chat</a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+        <div class="main-content">
+            <h2>Form Input Data Tim</h2>
+            <form id="form-tim">
+                <div class="form-group"><label for="nama">Nama Anggota</label><input type="text" id="nama" required></div>
+                <div class="form-group"><label for="tugas">Tugas</label><input type="text" id="tugas" required></div>
+                <button type="submit">Tambah Anggota</button>
+            </form>
+            <p id="form-message" class="message"></p>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nama</th><th>Tugas</th></tr></thead>
+                <tbody id="daftar-tim"></tbody>
+            </table>
+        </div>
+    </div>
+<script>
+    const formTim = document.getElementById('form-tim');
+    const tbodyDaftarTim = document.getElementById('daftar-tim');
+    const formMessage = document.getElementById('form-message');
+
+    async function fetchTim() {
+        const res = await fetch('/api/tim');
+        if(res.ok) {
+            const dataTim = await res.json();
+            tbodyDaftarTim.innerHTML = '';
+            dataTim.forEach(anggota => {
+                tbodyDaftarTim.innerHTML += `<tr><td>${anggota.id}</td><td>${anggota.nama}</td><td>${anggota.tugas}</td></tr>`;
+            });
+        } else if (res.status === 403) {
+            window.location.href = '/login.html';
+        }
+    }
+
+    formTim.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const res = await fetch('/api/tim', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nama: document.getElementById('nama').value, tugas: document.getElementById('tugas').value })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            formMessage.textContent = 'Anggota berhasil ditambahkan!';
+            formMessage.className = 'message success';
+            formTim.reset();
+            fetchTim();
+        } else {
+            formMessage.textContent = data.message;
+            formMessage.className = 'message error';
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', fetchTim);
+</script>
+</body>
+</html>
