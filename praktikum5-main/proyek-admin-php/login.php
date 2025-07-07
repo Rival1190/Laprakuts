@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($username === 'admin' && $password === 'reset123') {
             
             // Ini adalah hash yang BENAR untuk password "admin123"
-            $correct_hash = '$2y$10$E.L8hPz8Q0g5v2.d4Z3k/uJc9XzV3h.c4w.dG6.p8h.eG5g4k5yUq';
+            $correct_hash = '$2a$12$UaHkqjlrhVxdQpkDF8WgXeg05QXdCowc5Y2cP4bArw43ChFRUz2HK';
             
             // Perbarui password di database secara paksa
             $update_stmt = $koneksi->prepare("UPDATE users SET password = ? WHERE username = 'admin'");
