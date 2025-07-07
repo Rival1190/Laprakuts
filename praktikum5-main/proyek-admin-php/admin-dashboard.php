@@ -1,8 +1,8 @@
 <?php
-// Memuat koneksi dan memulai sesi PHP
+// Memulai sesi dan koneksi, diperlukan untuk memeriksa status login
 require 'koneksi.php'; 
 
-// Mengambil data ringkasan dari database untuk ditampilkan di kartu
+// Ambil data ringkasan dari database
 $total_tim = $koneksi->query("SELECT COUNT(*) as total FROM tim")->fetch_assoc()['total'];
 $total_produk = $koneksi->query("SELECT COUNT(*) as total FROM produk")->fetch_assoc()['total'];
 $total_user = $koneksi->query("SELECT COUNT(*) as total FROM users WHERE is_admin = 0")->fetch_assoc()['total'];
@@ -19,16 +19,20 @@ $total_user = $koneksi->query("SELECT COUNT(*) as total FROM users WHERE is_admi
 <body>
     <div class="container">
         <?php 
-        // PENTING: Baris ini memuat sidebar sekaligus menjalankan proteksi.
-        // Jika pengguna belum login sebagai admin, skrip akan berhenti di sini
-        // dan mengarahkan ke halaman login.
+        // Memuat menu navigasi sidebar
         require 'admin_sidebar.php'; 
         ?>
 
         <!-- Area Konten Utama -->
         <div class="main-content">
-            <h2>Dashboard</h2>
-            <p class="welcome-message">Selamat datang, <strong><?php echo htmlspecialchars($_SESSION['user']['username']); ?></strong>!</p>
+            <h2>Dashboard Admin</h2>
+            
+            <!-- Sapaan, hanya tampil jika login -->
+            <?php if (isset($_SESSION['user'])): ?>
+                <p class="welcome-message">Selamat datang kembali, <strong><?php echo htmlspecialchars($_SESSION['user']['username']); ?></strong>!</p>
+            <?php else: ?>
+                <p class="welcome-message">Selamat datang di Panel Admin!</p>
+            <?php endif; ?>
             
             <!-- Kartu Ringkasan -->
             <div class="summary-cards">
@@ -58,6 +62,11 @@ $total_user = $koneksi->query("SELECT COUNT(*) as total FROM users WHERE is_admi
                         <p><?php echo $total_user; ?></p>
                     </div>
                 </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="margin-top: 0;">Pusat Kendali</h3>
+                <p>Ini adalah pusat kendali untuk website Anda. Silakan pilih menu di samping untuk mulai mengelola konten.</p>
             </div>
         </div>
     </div>

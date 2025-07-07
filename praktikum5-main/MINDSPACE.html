@@ -2,456 +2,238 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MINDSPACE</title>
-
-  <!-- Bootstrap & AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINDSPACE with Tailwind CSS</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-   <link rel="stylesheet" href="css/custom.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Custom Style -->
   <style>
+    /* Sedikit kustomisasi di atas Tailwind */
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
     }
-    #navbar {
-      transition: top 0.3s ease-in-out;
-      z-index: 999;
+    @keyframes new-comment-animation {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .bg-purple {
-      background-color: rgb(120, 4, 400);
-    }
-    .footer__wave {
-      width: 100%;
-      height: 150px;
+    .new-comment {
+      animation: new-comment-animation 0.5s ease-out;
     }
   </style>
 </head>
+<body class="bg-gray-50">
 
-<body>
+  <nav id="navbar" class="bg-purple-800 sticky top-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="flex items-center space-x-3">
+          <a href="#" class="text-white text-2xl font-bold">MINDSPACE</a>
+          <img src="logo-Photoroom-Photoroom.png" alt="Mindspace Logo" class="w-12 h-12">
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" target="_blank" class="text-white italic hover:text-purple-200">Chat Dokter</a>
+          <a href="Tesdepresi.html" class="text-white italic hover:text-purple-200">Cek Kesehatan</a>
+          <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" class="bg-white text-purple-800 font-bold py-2 px-4 rounded-lg hover:bg-purple-100 transition duration-300">Login</a>
+        </div>
 
-  <!-- NAVBAR -->
-  <nav id="navbar" class="navbar navbar-expand-lg navbar- bg-purple sticky-top">
-    <div class="container">
-      <a href="#" class="navbar-brand fw-bold">MINDSPACE</a>
-      <img src="logo-Photoroom-Photoroom.png" alt="logo" style="width: 50px;">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto" >
-          <li class="nav-item"><a class="nav-link" href="cust/cust.html" target="_blank"style="font-style: italic; color:white;">Chat Dokter</a></li>
-          <li class="nav-item"><a class="nav-link" href="Tesdepresi.html"style="font-style: italic; color:white;">Cek Kesehatan</a></li>
-          <li class="">
-  <a class="nav-link" href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php">
-    <button class="submit-btn" type="button" style=" 
-      margin-top: 20px;
-      border: 1px solid blue;
-      color: blue;
-      background-color: #fff;
-      padding: 5px 13px;
-      border-radius: 7px;
-      text-align: center;
-      display: inline-block;
-      margin-top: -10px;
-      text-decoration: none;
-      font-weight: bold;">
-      Login
-    </button>
-  </a>
-</li>
-
-        </ul>
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+          </button>
+        </div>
       </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+      <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" target="_blank" class="block text-white italic hover:text-purple-200">Chat Dokter</a>
+      <a href="Tesdepresi.html" class="block text-white italic hover:text-purple-200">Cek Kesehatan</a>
+      <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" class="block bg-white text-purple-800 font-bold py-2 px-4 rounded-lg hover:bg-purple-100 transition duration-300 text-center mt-2">Login</a>
     </div>
   </nav>
 
-  <!-- HERO / JUMBO -->
-  <section id="jumbo" class="bg-light py-5" data-aos="fade-up">
-    <div class="container">
-      <div class="rounded py-5 px-4 bg-light-purple">
-        <div class="row align-items-start">
-          <div class="col-md-4 mb-4">
-            <h2 class="fw-bold text-dark mb-3">Solusi Mental di Tanganmu <div class="iholder" id="yui_3_5_1_1_1747214079853_1828"><img 
-            src="https://www.pngitem.com/pimgs/m/512-5121238_doctor-logo-cliparthot-of-the-more-and-animasi.png" id="img" style="width: 466px; height: 584px;"></div></h2>
+  <section id="jumbo" class="py-12" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <div class="bg-purple-50 rounded-2xl p-8">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-center md:text-left">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">Solusi Mental di Tanganmu</h2>
+            <img src="https://www.pngitem.com/pimgs/m/512-5121238_doctor-logo-cliparthot-of-the-more-and-animasi.png" class="mx-auto md:mx-0 w-3/4 max-w-xs" alt="Doctor Illustration">
           </div>
-          <div class="col-md-8">
-            <div class="row g-3">
-              <div class="col-md-4" data-aos="fade-up">
-                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                  <div class="d-flex align-items-start">
-                    <img src="chat-left-text.svg" class="me-3" style="width: 40px;" alt="" />
-                    <div>
-                      <p class="fw-bold mb-1"><a href="cust/cust.html">Chat Dengan Dokter</a></p>
-                      <small>Lebih dari 50 spesialis tersedia 24 jam</small>
-                    </div>
-                  </div>
-                </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="bg-white p-4 rounded-xl shadow-md flex items-start space-x-4" data-aos="fade-up">
+              <div class="bg-blue-100 p-2 rounded-full"><img src="chat-left-text.svg" class="w-6 h-6" alt="Chat Icon"></div>
+              <div>
+                <p class="font-bold"><a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" class="hover:underline">Chat Dengan Dokter</a></p>
+                <small class="text-gray-500">50+ spesialis tersedia 24 jam</small>
               </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                  <div class="d-flex align-items-start">
-                    <img src="shop.svg" class="me-3" style="width: 40px;" alt="" />
-                    <div>
-                      <h6 class="fw-bold mb-1"><a href="https://www.tokopedia.com/search?q=psikolog" target="blank">Toko Psikolog</a></h6>
-                      <small>Pahami dan pelajari tentang psikologi</small>
-                    </div>
-                  </div>
-                </div>
+            </div>
+             <div class="bg-white p-4 rounded-xl shadow-md flex items-start space-x-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="bg-green-100 p-2 rounded-full"><img src="shop.svg" class="w-6 h-6" alt="Shop Icon"></div>
+              <div>
+                <p class="font-bold"><a href="https://shopee.co.id/search?keyword=toko%20pisikologi" class="hover:underline">Toko Psikolog</a></p>
+                <small class="text-gray-500">Pahami & pelajari psikologi</small>
               </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card h-100 p-3 shadow-sm border-0 rounded-4">
-                  <div class="d-flex align-items-start">
-                    <img src="hospital.svg" class="me-3" style="width: 40px;" alt="" />
-                    <div>
-                      <h6 class="fw-bold mb-1">
-                        <a href="https://www.google.com/maps/search/clinic+psikologi" target="blank">Clinic</a>
-                      </h6>
-                      <small>Cari Clinic Terdekat Denganmu</small>
-                    </div>
-                  </div>
-                </div>
+            </div>
+             <div class="bg-white p-4 rounded-xl shadow-md flex items-start space-x-4 sm:col-span-2" data-aos="fade-up" data-aos-delay="200">
+              <div class="bg-red-100 p-2 rounded-full"><img src="hospital.svg" class="w-6 h-6" alt="Clinic Icon"></div>
+              <div>
+                <p class="font-bold"><a href="https://www.google.com/maps/search/kelinik/@-7.7421683,110.4142924,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" class="hover:underline">Klinik Terdekat</a></p>
+                <small class="text-gray-500">Cari klinik terdekat denganmu</small>
               </div>
-            </div> <!-- row -->
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="p-5 text-dark" data-aos="fade-up" style="background-image: url(bg.jpg); background-size: cover;">
-    <div class="container">
-      <h3 class="mb-3">VISI</h3>
-      <p>Menjadi layanan psikolog profesional dan terpercaya yang berperan sebagai mitra utama dalam mendukung
-        kesehatan mental dan kesejahteraan emosional setiap individu. Kami berkomitmen untuk memberikan
-        layanan yang komprehensif, inklusif, dan berkelanjutan dengan pendekatan holistik yang menggabungkan
-        aspek emosional, psikologis, sosial, dan spiritual. Melalui inovasi, empati, dan kepekaan terhadap kebutuhan
-        setiap klien, kami ingin menciptakan masyarakat yang lebih sadar akan pentingnya kesehatan mental serta
-        mampu menjalani hidup yang lebih seimbang, bermakna, dan produktif..</p>
-      <h3 class="mb-3 mt-4">MISI</h3>
-      <p  >
-        Memberikan layanan psikologi yang profesional, empatik, dan berbasis ilmiah kepada individu, keluarga, dan komunitas.<br>
-        Meningkatkan kesadaran masyarakat tentang pentingnya kesehatan mental melalui edukasi dan kampanye positif.<br>
-        Mendampingi proses pemulihan dan pertumbuhan psikologis klien dengan pendekatan yang manusiawi dan personal.<br>
-        Mengembangkan inovasi layanan konsultasi, baik secara langsung maupun daring.<br>
-        Menjaga etika, kerahasiaan, dan kenyamanan dalam setiap sesi konseling atau terapi.
-        <h3 class="mb-3 mt-5">INOVASI KESEHATAN</h3>
-      </p>
+  <section id="about" class="py-12 bg-cover bg-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(bg.jpg);" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-2xl font-bold">VISI</h3>
+      <p class="mt-2 max-w-3xl">Menjadi layanan psikolog profesional dan terpercaya yang berperan sebagai mitra utama dalam mendukung kesehatan mental dan kesejahteraan emosional setiap individu.</p>
+      <h3 class="text-2xl font-bold mt-6">MISI</h3>
+      <ul class="mt-2 space-y-1 list-disc list-inside">
+        <li>Memberikan layanan psikologi yang profesional, empatik, dan berbasis ilmiah.</li>
+        <li>Meningkatkan kesadaran masyarakat tentang pentingnya kesehatan mental.</li>
+        <li>Mendampingi proses pemulihan dan pertumbuhan psikologis klien.</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="team" class="py-12">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold mb-8 text-center text-gray-800">Tim Support Kami</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                    <img class="w-32 h-32 rounded-full mx-auto object-cover" src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="Foto Aditya">
+                    <div class="mt-4">
+                        <h5 class="font-bold text-lg">Aditya Uzman</h5>
+                        <a href="mail.html" class="text-sm text-purple-600 hover:underline">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                    <img class="w-32 h-32 rounded-full mx-auto object-cover" src="Aqsa.jpeg" alt="Foto Aqsa">
+                    <div class="mt-4">
+                        <h5 class="font-bold text-lg">Muh. Aidil Aqsa</h5>
+                        <a href="aqsa.html" class="text-sm text-purple-600 hover:underline">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                    <img class="w-32 h-32 rounded-full mx-auto object-cover" src="Foto Rival.jpeg" alt="Foto Rival">
+                    <div class="mt-4">
+                        <h5 class="font-bold text-lg">Rival Maliyanto</h5>
+                        <a href="Rival.html" class="text-sm text-purple-600 hover:underline">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                    <img class="w-32 h-32 rounded-full mx-auto object-cover" src="Hilman.jpeg" alt="Foto Hilman">
+                    <div class="mt-4">
+                        <h5 class="font-bold text-lg">Hilman</h5>
+                        <a href="Hilman.html" class="text-sm text-purple-600 hover:underline">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg transform hover:-translate-y-1 transition-transform duration-300">
+                    <img class="w-32 h-32 rounded-full mx-auto object-cover" src="foto putu.jpeg" alt="Foto Putu">
+                    <div class="mt-4">
+                        <h5 class="font-bold text-lg">Putu</h5>
+                        <a href="Putu.html" class="text-sm text-purple-600 hover:underline">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="mt-5">
-  <!-- Bootstrap 5 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<div class="container my-5">
-  <h3 class="fw-bold mb-4">Tim Support</h3>
-  <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
-    
-    <div class="carousel-inner">
-
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <div class="d-flex justify-content-start gap-3">
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-          <!-- Google Font -->
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-          <style>
-            body {
-              font-family: 'Inter', sans-serif;
-              background-color: #f7f9fc;
-              padding: 40px;
-            }
-        
-            .card-custom {
-              border: none;
-              border-radius: 15px;
-              box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-              transition: transform 0.2s ease;
-            }
-        
-            .card-custom:hover {
-              transform: translateY(-5px);
-            }
-        
-            .card-img-top {
-              border-top-left-radius: 15px;
-              border-top-right-radius: 15px;
-              object-fit: cover;
-              height: 200px;
-            }
-        
-            .btn-custom {
-              background-color: #0baac3;
-              border: none;
-            }
-        
-            .btn-custom:hover {
-              background-color: #0e2ee2;
-            }
-          </style>
-         <!-- card profile 1 -->
-          
-           <!-- Card Profil 2 -->
-          <div class="card m-3" style="width:300px">
-            <img class="card-img-top d-flex" src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title fw-bold">Aditya Uzman Chandra Nugraha</h4>
-             
-              <a href="mail.html" class="btn btn-primary">Lihat Profil</a>
-            </div>
-          </div> 
-           <div class="card m-3" style="width:300px">
-            <img class="card-img-top d-flex" src="Aqsa.jpeg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title fw-bold">Muh.Aidil Aqsa</h4>
-             
-              <a href="aqsa.html" class="btn btn-primary">Lihat Profil</a>
-            </div>
-          </div> 
-           <!-- Card Profil 2 -->
-          <div class="card m-3" style="width:300px">
-            <img class="card-img-top d-flex" src="Foto Rival.jpeg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title fw-bold">Rival Maliyanto</h4>
-             
-              <a href="Rival.html" class="btn btn-primary">Lihat Profil</a>
-            </div>
-          </div> 
-           <!-- Card Profil 2 -->
-          <div class="card m-3" style="width:300px">
-            <img class="card-img-top d-flex" src="Hilman.jpeg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title fw-bold">Hilman</h4>
-             
-              <a href="Hilman.html" class="btn btn-primary">Lihat Profil</a>
-            </div>
-          </div> 
-           <!-- Card Profil 2 -->
-          <div class="card m-3" style="width:300px">
-            <img class="card-img-top d-flex" src="foto putu.jpeg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title fw-bold">Putu</h4>
-             
-              <a href="Putu.html" class="btn btn-primary">Lihat Profil</a>
-            </div>
-          </div> 
+  <section id="testimonials" class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Kata Mereka tentang MINDSPACE</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+          <p class="text-gray-600 italic flex-grow">“Sangat membantu.. malam2 butuh obat, gak perlu keluar rumah”</p>
+          <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
+            <div class="font-bold text-sm text-purple-800">SAINEM WIYONO</div>
+            <a href="#" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Beli Obat</a>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+          <p class="text-gray-600 italic flex-grow">“Sangat Helpful!!! Terima kasih yaa, sangat menghemat waktu dan respon dokternya juga baik.”</p>
+          <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
+            <div class="font-bold text-sm text-purple-800">LINTANG ANINDHITYA I.</div>
+            <a href="#" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Chat Dokter</a>
+          </div>
         </div>
       </div>
-
-     
-    </div>
-
-    <!-- Controls -->
-    
-  </div>
-</div>
-<div class="komen">
-         <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      margin: 40px;
-      color: #333;
-    }
-    h2 {
-      text-align: left;
-      margin-left: 40px;
-      font-size: 28px;
-      font-style: bold;
-      margin-bottom: 30px;
-    }
-    .testimonial-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-    .testimonial {
-      background: #c3c4e3;
-      border-radius: 10px;
-      padding: 20px;
-      width: 300px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .testimonial img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .testimonial p {
-      font-style: italic;
-      margin: 15px 0;
-    }
-    .author {
-      font-weight: bold;
-      color: #555;
-      font-size: 14px;
-    }
-    .action-button {
-      border: 1px solid blue;
-      color: blue;
-      background-color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-align: center;
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .action-button:hover {
-      background-color: blue;
-      color:white;
-    }
-    .comment-form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      border-top: 2px solid #eee;
-    }
-    .comment-form h3 {
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .comment-form input,
-    .comment-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .comment-form button {
-      background-color: blue;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .comment-form button:hover {
-       border: 1px solid blue;
-      background-color: #ffffff;
-      color: black;
-    }
-  </style>
-         <h2>Kata Mereka tentang MINDSPACE</h2>
-
-  <div class="testimonial-container">
-    <div class="testimonial">
-      <img src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="Sainem Wiyono">
-      <p>“Sangat membantu.. malam2 butuh obat, gak perlu keluar rumah”</p>
-      <div class="author">SAINEM WIYONO</div>
-      <a href="https://www.tokopedia.com/search?q=psikolog" class="action-button">Beli Obat</a>
-    </div>
-
-    <div class="testimonial">
-      <img src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="Lintang">
-      <p>“Sangat Helpful!!! Terima kasih yaa, sangat menghemat waktu dan respon dokternya juga baik. resep obatnya juga manjur sekalii. thank u ya 🥰 semoga kedepannya tambah keren lagi.”</p>
-      <div class="author">LINTANG ANINDHITYA INDRASWARI</div>
-      <a href="cust/cust.html" class="action-button">Chat dengan Dokter</a>
-    </div>
-
-    <div class="testimonial">
-      <img src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="Ahkbar">
-      <p>“Menggunakan MINDSPACE untuk pemanggilan Home Service kesehatan. Sangat memuaskan, walau di proses perlu perubahan jasa medis, tetap dilayani dengan cepat, dan proses refund mudah & cepat. Semoga bisa dipertahankan 🥰”</p>
-      <div class="author">AHKBAR FELAYATI</div>
-      <a href="#" class="action-button">Pesan Tes Lab</a>
-    </div>
-
-    <div class="testimonial">
-      <img src="WhatsApp Image 2025-05-12 at 08.20.26_ce4b8e89.jpg" alt="MINDSPACE user">
-      <p>“Hallo, terimakasih MINDSPACE sejak pertama konsultasi hingga saat ini kulitku sudah banyak mengalami perubahan. Jerawat dan bekasnya semakin membaik berkat saran dokter-dokter MINDSPACE. Jujur baru kali ini bisa konsultasi dengan dokter kulit secara leluasa dan terbuka, semua pertanyaan tentang jerawatku dijawab secara gamblang.”</p>
-      <div class="author">PENGGUNA MINDSPACE</div>
-    </div>
-  </div>
-
-  <div class="comment-form">
-    <h3>Berikan Komentar Anda</h3>
-    <form action="#" method="post">
-      <input type="text" name="nama" placeholder="Nama Anda" required>
-      <textarea name="komentar" rows="4" placeholder="Tulis komentar Anda di sini..." required></textarea>
-      <button type="submit">Kirim Komentar</button>
-    </form>
-  </div>
-
-<div class="footer">
-  <footer class="footer" >
-  
-      <!-- SVG Wave di atas -->
-      <svg
-        class="footer__wave" style="margin-bottom: 100;"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="300 0 600 300"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,32L40,53.3C80,75,160,117,240,106.7C320,96,400,32,480,37.3C560,43,640,117,720,144C800,171,880,149,960,144C1040,139,1120,149,1200,160C1280,171,1360,181,1400,186.7L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-          fill="#ffffff"
-        />
-      </svg>
-    
-     
-     
-
-    
-  
-    
-
-    <!-- Middle: link-link -->
-    <div class="footer__middle" style="margin-top: 0px;">
-      <div class="footer__col">
-        <h4>Follow Kami </h4>
-        <ul>
-          <li><img src="instagram.svg" alt=""><a href="https://www.instagram.com/sayamaiil?igsh=MWZhM2N0OW1vcHo5eA%3D%3D&utm_source=qr"> Instagram</a></li>
-          <li><img src="whatsapp.svg" alt=""><a href="https://wa.me/6289515004836"> Whatsapp</a></li>
-          <li><img src="facebook.svg" alt=""><a href="https://www.facebook.com/share/14opVFE5mY/?mibextid=wwXIfr"> facebook</a></li>
-          
-
-        </ul>
-        <div class="footer__bottom">
-      <div class="contact" >
-        <img src="104847_gmail_icon.png" alt="">
-        <span>adityauzmanchandra@gmail.com</span>
-      </div>
       
+      <div class="bg-white p-8 rounded-xl shadow-lg mt-12 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Berikan Komentar Anda</h3>
+        <form id="comment-form" class="space-y-4">
+          <div>
+            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Anda</label>
+            <input type="text" id="nama" name="nama" required placeholder="Contoh: Budi" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500">
+          </div>
+          <div>
+            <label for="komentar" class="block text-sm font-medium text-gray-700">Komentar</label>
+            <textarea id="komentar" name="komentar" rows="4" required placeholder="Tulis sesuatu yang menarik..." class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"></textarea>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700">Kirim Komentar</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="comment-section" class="space-y-6 mt-12 max-w-2xl mx-auto">
+        </div>
     </div>
-      </div>
-      
-      <div class="footer__col">
-        <h4 style="color: rgb(0, 0, 0);">Full Stack Developer</h4>
-        <ul>
-          <li><a href="#">Aditya Uzman Chandra Nugraha</a></li>
-         
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4>KOLABORASI</h4>
-        <ul>
-          <li><a href="#">Karir Tim</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#"></a></li>
-          <li><a href="#">Kritik Saran</a></li>
+  </section>
 
-
-
-          
-      </div>
+  <footer class="bg-gray-800 text-gray-300 py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-white mb-3">Follow Kami</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="instagram.svg" class="w-5 h-5" alt="Instagram"> Instagram</a></li>
+                    <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="whatsapp.svg" class="w-5 h-5" alt="Whatsapp"> Whatsapp</a></li>
+                    <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="facebook.svg" class="w-5 h-5" alt="Facebook"> Facebook</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-3">Developer</h4>
+                <ul>
+                    <li><a href="#" class="hover:text-white">Aditya Uzman Chandra N.</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold text-white mb-3">Kolaborasi</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white">Karir Tim</a></li>
+                    <li><a href="#" class="hover:text-white">Support</a></li>
+                    <li><a href="#" class="hover:text-white">Kritik & Saran</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm">
+            <p>&copy; 2025 MINDSPACE. All rights reserved.</p>
+        </div>
     </div>
-
-     <div>
-    <p>© 2016-2025, PT and Affiliates. All rights resource
   </footer>
 
-  <!-- SCRIPT -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -459,18 +241,70 @@
       once: true
     });
 
-    // Hide navbar on scroll down
+    // Navbar scroll logic
     let lastScrollTop = 0;
     const navbar = document.getElementById('navbar');
-
-    window.addEventListener("scroll", function () {
+    window.addEventListener("scroll", function() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        navbar.style.top = "-100px";
-      } else {
-        navbar.style.top = "0";
-      }
+      navbar.style.top = (scrollTop > lastScrollTop) ? "-100px" : "0";
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Comment Section Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const comments = [];
+        const commentSection = document.getElementById('comment-section');
+        const commentForm = document.getElementById('comment-form');
+
+        function displayComments() {
+            commentSection.innerHTML = '';
+            if (comments.length === 0) {
+                commentSection.innerHTML = '<p class="text-center text-gray-500">Belum ada komentar. Jadilah yang pertama!</p>';
+                return;
+            }
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                // Gunakan kelas Tailwind
+                commentElement.className = 'bg-white p-5 rounded-xl shadow-md flex items-start space-x-4 new-comment';
+                commentElement.innerHTML = `
+                    <img src="${comment.avatar}" alt="Avatar" class="w-10 h-10 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-1">
+                            <p class="font-bold text-gray-900">${comment.nama}</p>
+                            <p class="text-xs text-gray-500">${comment.waktu}</p>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">${comment.komentar}</p>
+                    </div>
+                `;
+                commentSection.appendChild(commentElement);
+            });
+        }
+
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const namaInput = document.getElementById('nama');
+            const komentarInput = document.getElementById('komentar');
+            const newComment = {
+                nama: namaInput.value.trim(),
+                komentar: komentarInput.value.trim(),
+                waktu: "Baru saja",
+                avatar: `https://i.pravatar.cc/40?u=${Date.now()}`
+            };
+            if (newComment.nama && newComment.komentar) {
+                comments.unshift(newComment);
+                displayComments();
+                commentForm.reset();
+            }
+        });
+
+        displayComments();
     });
   </script>
 </body>
