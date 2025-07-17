@@ -1,3 +1,23 @@
+<?php
+$productsFile = 'proyek-admin-php/products.json';
+
+// Fungsi untuk membaca produk dari file JSON
+function getProducts($filePath) {
+    if (!file_exists($filePath)) {
+        return [];
+    }
+    $json_data = file_get_contents($filePath);
+    return json_decode($json_data, true) ?: [];
+}
+
+// Ambil semua produk untuk ditampilkan
+$allProducts = getProducts($productsFile);
+
+
+
+// !!! TAMBAHKAN DUA BARIS INI UNTUK DEBUG !!!
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,6 +126,55 @@
       </ul>
     </div>
   </section>
+   <section id="products" class="py-12 bg-white">
+   <section id="produk" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">
+            Produk & Layanan Kami
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <?php if (empty($allProducts)): ?>
+                <p class="col-span-full text-center text-gray-500">
+                    Belum ada produk yang tersedia saat ini.
+                </p>
+            <?php else: ?>
+                <?php foreach (array_reverse($allProducts) as $product): ?>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transform hover:-translate-y-2 transition-transform duration-300">
+                        
+                        <div class="relative">
+                            <img src="<?php echo 'proyek-admin-php/' . htmlspecialchars($product['image']); ?>"
+                                 alt="<?php echo htmlspecialchars($product['name']); ?>" 
+                                 class="w-full h-56 object-cover">
+                        </div>
+                        
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h3 class="text-lg font-bold text-gray-900 truncate">
+                                <?php echo htmlspecialchars($product['name']); ?>
+                            </h3>
+                            
+                            <p class="text-xl font-semibold text-purple-700 my-2">
+                                Rp <?php echo number_format($product['price'], 0, ',', '.'); ?>
+                            </p>
+                            
+                            <p class="text-sm text-gray-600 flex-grow">
+                                <?php echo htmlspecialchars($product['description']); ?>
+                            </p>
+                           <a href="proyek-admin-php/pembayaran.php?id=<?php echo $product['id']; ?>" class="mt-4 w-full text-center bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors">
+    Lihat Detail
+</a>
+                            
+                           
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            
+        </div>
+    </div>
+</section>
+   </section>
   
   <section id="team" class="py-12">
     <div class="container mx-auto px-4">
@@ -168,14 +237,14 @@
           <p class="text-gray-600 italic flex-grow">“Sangat membantu.. malam2 butuh obat, gak perlu keluar rumah”</p>
           <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
             <div class="font-bold text-sm text-purple-800">SAINEM WIYONO</div>
-            <a href="#" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Beli Obat</a>
+            <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/produk.php#" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Beli Obat</a>
           </div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
           <p class="text-gray-600 italic flex-grow">“Sangat Helpful!!! Terima kasih yaa, sangat menghemat waktu dan respon dokternya juga baik.”</p>
           <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
             <div class="font-bold text-sm text-purple-800">LINTANG ANINDHITYA I.</div>
-            <a href="#" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Chat Dokter</a>
+            <a href="http://localhost/1_UTS%20WEB/praktikum5-main/proyek-admin-php/login.php" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold hover:bg-purple-200 transition">Chat Dokter</a>
           </div>
         </div>
       </div>
@@ -208,8 +277,8 @@
             <div>
                 <h4 class="font-bold text-white mb-3">Follow Kami</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="instagram.svg" class="w-5 h-5" alt="Instagram"> Instagram</a></li>
-                    <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="whatsapp.svg" class="w-5 h-5" alt="Whatsapp"> Whatsapp</a></li>
+                    <li><a href="https://instagram.com/sayamaiil" class="hover:text-white flex items-center gap-2"><img src="instagram.svg" class="w-5 h-5" alt="Instagram"> Instagram</a></li>
+                    <li><a href="https://wa.me/6289515004836" class="hover:text-white flex items-center gap-2"><img src="whatsapp.svg" class="w-5 h-5" alt="Whatsapp"> Whatsapp</a></li>
                     <li><a href="#" class="hover:text-white flex items-center gap-2"><img src="facebook.svg" class="w-5 h-5" alt="Facebook"> Facebook</a></li>
                 </ul>
             </div>
@@ -222,9 +291,9 @@
              <div>
                 <h4 class="font-bold text-white mb-3">Kolaborasi</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white">Karir Tim</a></li>
-                    <li><a href="#" class="hover:text-white">Support</a></li>
-                    <li><a href="#" class="hover:text-white">Kritik & Saran</a></li>
+                    <li><a href="coomingsoon.html" class="hover:text-white">Karir Tim</a></li>
+                    <li><a href="coomingsoon.html" class="hover:text-white">Support</a></li>
+                    <li><a href="coomingsoon.html" class="hover:text-white">Kritik & Saran</a></li>
                 </ul>
             </div>
         </div>

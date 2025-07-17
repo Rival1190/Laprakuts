@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segera Hadir - Kami Sedang Membangun Sesuatu yang Keren!</title>
+    
+    <!-- Script Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+
+    <main class="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-slate-900 via-purple-950/60 to-slate-900">
+        
+        <div class="w-full max-w-lg mx-auto text-center bg-slate-800/50 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-slate-700">
+            
+            <!-- Ikon dengan Animasi -->
+            <div class="mb-6">
+                <!-- Ikon Roket -->
+                <svg class="w-16 h-16 mx-auto text-purple-400 animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a6 6 0 01-2.56 5.84m-2.56-5.84a6 6 0 017.38-5.84m-12 5.84a6 6 0 015.84-7.38v4.82m-5.84 2.56a6 6 0 012.56-5.84m2.56 5.84a6 6 0 01-7.38 5.84m12-5.84a6 6 0 01-5.84 7.38m5.84-7.38a6 6 0 01-7.38-5.84m-5.84 7.38a6 6 0 017.38-5.84" />
+                </svg>
+            </div>
+
+            <!-- Judul Utama -->
+            <h1 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 tracking-tight mb-3">
+                Segera Hadir!
+            </h1>
+
+            <!-- Deskripsi -->
+            <p class="text-slate-300 text-lg md:text-xl max-w-md mx-auto">
+                Kami sedang bekerja keras di balik layar untuk meluncurkan situs baru kami. Sesuatu yang luar biasa sedang dalam perjalanan!
+            </p>
+
+            <!-- Formulir Newsletter -->
+            <div class="mt-10">
+                <p class="text-slate-400 mb-4 font-medium">Jadilah yang pertama tahu saat kami meluncur.</p>
+                <form action="#" method="post" class="flex flex-col sm:flex-row gap-3 w-full max-w-sm mx-auto">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Masukkan email Anda" 
+                        required
+                        class="flex-grow w-full px-4 py-3 bg-slate-700/60 text-white border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                    >
+                    <button 
+                        type="submit"
+                        class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-purple-500 transition-all duration-300 shadow-lg"
+                    >
+                        Beritahu Saya
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
